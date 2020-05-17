@@ -2,6 +2,7 @@ package com.multicampus.teamProj4.bank.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+
 public class SpringWebApplicationInitializer 
 		extends AbstractAnnotationConfigDispatcherServletInitializer{
 
