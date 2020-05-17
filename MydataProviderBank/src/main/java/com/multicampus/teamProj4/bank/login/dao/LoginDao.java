@@ -1,6 +1,5 @@
 package com.multicampus.teamProj4.bank.login.dao;
 
-import java.util.Optional;
 
 import org.hibernate.HibernateException;
 

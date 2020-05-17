@@ -1,6 +1,5 @@
 package com.multicampus.teamProj4.bank.login.dao;
 
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -12,11 +11,16 @@ public class LoginDaoImp implements LoginDao{
 
 	private SessionFactory sessionFactory;
 	
+	public LoginDaoImp(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+	
 	@Override
 	public void addFingerPrint(String pin, String fingerprint){
 		Session session = sessionFactory.getCurrentSession();
 		LoginEntity loginEntity = new LoginEntity(pin, fingerprint);
 		session.persist(loginEntity);
+		session.flush();
 	}
 
 	@Override
@@ -28,7 +32,9 @@ public class LoginDaoImp implements LoginDao{
 
 	@Override
 	public void deleteFingerPrint(String pin, String fingerprint){
-		Session Se
+		Session session = sessionFactory.getCurrentSession();
+		LoginEntity loginEntity = new LoginEntity(pin, fingerprint);
+		session.delete(loginEntity);
 	}
 
 }
