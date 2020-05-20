@@ -15,7 +15,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.login.dao.LoginDao;
 import com.multicampus.teamProj4.bank.login.dao.LoginDaoImp;
 import com.multicampus.teamProj4.bank.login.entity.LoginEntity;
@@ -24,9 +29,10 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @PropertySource("classpath:Properties/dbUser.properties")
 public class DBBeanConfiguration {
-	
+
 	@Bean
-	public DataSource datasource(@Value("${dbuser}")String user, @Value("${password}")String password, @Value("${url}")String url) {
+	public DataSource datasource(@Value("${dbuser}") String user, @Value("${password}") String password,
+			@Value("${url}") String url) {
 		HikariDataSource datasource = new HikariDataSource();
 		datasource.setUsername(user);
 		datasource.setPassword(password);
@@ -34,31 +40,50 @@ public class DBBeanConfiguration {
 		datasource.setDriverClassName(com.mysql.cj.jdbc.Driver.class.getName());
 		datasource.setMaximumPoolSize(10);
 		datasource.setMaxLifetime(30000);
-		
+
 		return datasource;
 	}
-	
+
+	@Bean
+	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
+
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setGenerateDdl(true);
+
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
+		factory.setJpaVendorAdapter(vendorAdapter);
+		factory.setPackagesToScan("com.multicampus.teamProj4.bank.account.entity");
+		factory.setDataSource(dataSource);
+		factory.afterPropertiesSet();
+
+		return factory.getObject();
+	}
+
 	@Bean
 	public LocalSessionFactoryBean localSessionFactoryBean(DataSource dataSource) {
 		LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
 		localSessionFactoryBean.setHibernateProperties(getHibernateProperties());
 		localSessionFactoryBean.setDataSource(dataSource);
 		localSessionFactoryBean.setAnnotatedClasses(LoginEntity.class);
-		
+		localSessionFactoryBean.setAnnotatedClasses(AccountEntity.class);
+
 		return localSessionFactoryBean;
 	}
-	
+
 	@Bean
-	public HibernateTransactionManager hibernateTransactionManager(SessionFactory sessionFactory) {
-		return new HibernateTransactionManager(sessionFactory);
-	}	
-	
-	private Properties getHibernateProperties(){
+	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
+
+		JpaTransactionManager txManager = new JpaTransactionManager();
+		txManager.setEntityManagerFactory(entityManagerFactory);
+		return txManager;
+	}
+
+	private Properties getHibernateProperties() {
 		Properties properties = new Properties();
-		properties.put(AvailableSettings.DIALECT,MySQL5Dialect.class.getName());
-		properties.put(AvailableSettings.SHOW_SQL,String.valueOf(true));
-		properties.put(AvailableSettings.HBM2DDL_AUTO,"create");
-		
+		properties.put(AvailableSettings.DIALECT, MySQL5Dialect.class.getName());
+		properties.put(AvailableSettings.SHOW_SQL, String.valueOf(true));
+		properties.put(AvailableSettings.HBM2DDL_AUTO, "create");
+
 		return properties;
 	}
 }
