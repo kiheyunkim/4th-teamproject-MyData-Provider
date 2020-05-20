@@ -3,6 +3,7 @@ package com.multicampus.teamProj4.bank.account.Service;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -31,8 +32,6 @@ public class AccountServiceImp implements AccountService {
 			throw new RepositoryException("password Not Match", 1L);
 		}
 		
-		accountRepository.flush();
-		
 		return account.getBalance();
 	}
 	
@@ -52,15 +51,19 @@ public class AccountServiceImp implements AccountService {
 			accountEntity.setPassword(newPasswordStr);
 			accountEntity.setSalt(newSaltStr);
 			
-			accountRepository.save(accountEntity);
+			accountRepository.saveAndFlush(accountEntity);
 			
-			accountRepository.flush();
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
 			return false;
 		}	
 		return true;
 	}
 	
+	
+	@Transactional
+	public List<AccountEntity> getUserAccount(String identify) {
+		return accountRepository.findByidentify(identify);
+	}
 	
 	
 	

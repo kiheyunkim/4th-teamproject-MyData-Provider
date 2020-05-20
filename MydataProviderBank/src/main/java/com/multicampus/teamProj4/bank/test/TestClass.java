@@ -1,6 +1,8 @@
 package com.multicampus.teamProj4.bank.test;
 
 
+import java.util.List;
+
 import javax.persistence.EntityNotFoundException;
 
 import org.junit.After;
@@ -15,6 +17,7 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.multicampus.teamProj4.bank.account.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.account.Service.AccountService;
+import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
 import com.multicampus.teamProj4.bank.config.SpringConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -63,6 +66,11 @@ public class TestClass {
 	
 	@After
 	public void flush() {
+		List<AccountEntity> list = accountService.getUserAccount("12344");
+		System.out.println(list.size());
+		for (AccountEntity accountEntity : list) {
+			System.out.println(accountEntity);
+		}
 	}
 	
 }
