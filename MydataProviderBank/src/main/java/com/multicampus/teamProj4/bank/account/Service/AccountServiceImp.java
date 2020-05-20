@@ -1,14 +1,21 @@
 package com.multicampus.teamProj4.bank.account.Service;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.transaction.Transactional;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
+import com.multicampus.teamProj4.bank.account.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.account.Repository.AccountRepository;
 import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
+import com.multicampus.teamProj4.bank.account.entity.AccountType;
+import com.multicampus.teamProj4.bank.utils.RandomStringGenerator;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
-//@Service
+@Service
 public class AccountServiceImp implements AccountService {
 	private AccountRepository accountRepository;
 
@@ -18,13 +25,44 @@ public class AccountServiceImp implements AccountService {
 
 	@Transactional
 	public Long getBalance(long id, String password) {
-		AccountEntity account = null;
-		try {
-			account = accountRepository.getOne(id);
-		} catch (Exception e) {
-			e.printStackTrace();
+		AccountEntity account = accountRepository.getOne(id);
+		
+		if(!account.getPassword().equals(password)) {
+			throw new RepositoryException("password Not Match", 1L);
 		}
-
+		
+		accountRepository.flush();
+		
 		return account.getBalance();
 	}
+	
+	@Transactional
+	public Boolean addAccount(String password, AccountType type, String identify){
+		try {
+			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+			byte[] newSalt = messageDigest.digest(RandomStringGenerator.getRandomString(100).getBytes("UTF-8"));
+			String newSaltStr = Base64.encode(newSalt);
+			byte[] newPassword = messageDigest.digest((password + newSaltStr).getBytes());
+			String newPasswordStr = Base64.encode(newPassword);
+			
+			AccountEntity accountEntity = new AccountEntity();
+			accountEntity.setIdentify(identify);
+			accountEntity.setAccountType(type);
+			accountEntity.setBalance(0L);
+			accountEntity.setPassword(newPasswordStr);
+			accountEntity.setSalt(newSaltStr);
+			
+			accountRepository.save(accountEntity);
+			
+			accountRepository.flush();
+		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+			return false;
+		}	
+		return true;
+	}
+	
+	
+	
+	
+	
 }
