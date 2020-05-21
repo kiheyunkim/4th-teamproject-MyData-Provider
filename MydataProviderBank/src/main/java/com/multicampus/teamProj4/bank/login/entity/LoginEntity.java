@@ -20,9 +20,9 @@ public class LoginEntity {
 	private String password;
 	@Column
 	private String salt;
-	@Column
+	@Column(unique = true)
 	private String identifyStr;
-	@Column // for 공인인증
+	@Column(unique = true) // for 공인인증
 	private String uniqueStr;
 
 	public LoginEntity() {

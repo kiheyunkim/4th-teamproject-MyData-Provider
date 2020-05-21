@@ -6,14 +6,14 @@ public class RepositoryException extends DataAccessException {
 
 	private static final long serialVersionUID = 1L;
 	
-	private Long errorNum;
+	private RepositoryExceptionType errorType;
 
-	public RepositoryException(String msg, Long errorType) {
-		super(msg);
-		this.errorNum = errorType;
+	public RepositoryException(RepositoryExceptionType errorType) {
+		super("Repository Error - Type:" + errorType.name());
+		this.errorType = errorType;
 	}
 	
-	public Long getErrorType() {
-		return errorNum;
+	public RepositoryExceptionType getErrorType() {
+		return errorType;
 	}
 }

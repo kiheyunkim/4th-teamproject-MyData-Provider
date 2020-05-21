@@ -1,5 +1,7 @@
 package com.multicampus.teamProj4.bank.account.Service;
 
+import static org.mockito.Mockito.doThrow;
+
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
+import com.multicampus.teamProj4.bank.Exception.RepositoryExceptionType;
 import com.multicampus.teamProj4.bank.account.Repository.AccountRepository;
 import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
@@ -29,7 +32,7 @@ public class AccountServiceImp implements AccountService {
 		AccountEntity account = accountRepository.getOne(accountNum);
 
 		if (!account.getPassword().equals(password)) {
-			throw new RepositoryException("password Not Match", 1L);
+			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_PASSWORD_NOT_MATCH);
 		}
 
 		return account.getBalance();
@@ -55,7 +58,7 @@ public class AccountServiceImp implements AccountService {
 			accountRepository.saveAndFlush(accountEntity);
 
 		} catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-			return false;
+			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_ERROR_OCCURED);
 		}
 		return true;
 	}
@@ -87,22 +90,22 @@ public class AccountServiceImp implements AccountService {
 			byte[] checker = messageDigest.digest((password + salt).getBytes());
 
 			if (!account.getPassword().equals(Base64.getEncoder().encodeToString(checker))) {
-				throw new RepositoryException("password Not Match", 1L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_PASSWORD_NOT_MATCH);
 			}
 
 			if (account.getAccountType() == AccountType.SAVINGS) {
-				throw new RepositoryException("Cannot withdraw", 2L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_WITHDRAW_INVALID_TYPE);
 			}
 
 			if (account.getBalance() - money < 0 && account.getAccountType() != AccountType.MINUS) {
-				throw new RepositoryException("Not Enough Balance", 3L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_NOT_ENOUGH_BALANCE);
 			}
 
 			account.setBalance(account.getBalance() - money);
 			return account.getBalance();
 
 		} catch (NoSuchAlgorithmException e) {
-			throw new RepositoryException("Error Occured", 0L);
+			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_ERROR_OCCURED);
 		}
 	}
 
@@ -118,15 +121,15 @@ public class AccountServiceImp implements AccountService {
 			byte[] checker = messageDigest.digest((password + salt).getBytes());
 
 			if (!accFrom.getPassword().equals(Base64.getEncoder().encodeToString(checker))) {
-				throw new RepositoryException("password Not Match", 1L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_PASSWORD_NOT_MATCH);
 			}
 
 			if (accFrom.getAccountType() == AccountType.SAVINGS) {
-				throw new RepositoryException("Cannot withdraw", 2L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_WITHDRAW_INVALID_TYPE);
 			}
 
 			if (accFrom.getBalance() - money < 0 && accFrom.getAccountType() != AccountType.MINUS) {
-				throw new RepositoryException("Not Enough Balance", 3L);
+				throw new RepositoryException(RepositoryExceptionType.ACCOUNT_NOT_ENOUGH_BALANCE);
 			}
 
 			accFrom.setBalance(accFrom.getBalance() - money);
@@ -134,7 +137,7 @@ public class AccountServiceImp implements AccountService {
 
 			return accFrom.getBalance();
 		} catch (NoSuchAlgorithmException e) {
-			throw new RepositoryException("Error Occured", 0L);
+			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_ERROR_OCCURED);
 		}
 	}
 

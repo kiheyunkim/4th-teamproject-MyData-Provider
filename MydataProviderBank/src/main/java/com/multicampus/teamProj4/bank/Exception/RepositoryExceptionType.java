@@ -1,0 +1,12 @@
+package com.multicampus.teamProj4.bank.Exception;
+
+public enum RepositoryExceptionType {
+	ACCOUNT_PASSWORD_NOT_MATCH,
+	ACCOUNT_WITHDRAW_INVALID_TYPE,
+	ACCOUNT_NOT_ENOUGH_BALANCE,
+	ACCOUNT_ERROR_OCCURED,
+	
+	LOGIN_PASSWORD_NOT_MATCH,
+	LOGIN_ERROR_OCCURED
+	
+}
