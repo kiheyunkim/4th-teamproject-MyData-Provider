@@ -60,9 +60,9 @@ public class DBBeanConfiguration {
 		LocalSessionFactoryBean localSessionFactoryBean = new LocalSessionFactoryBean();
 		localSessionFactoryBean.setHibernateProperties(getHibernateProperties());
 		localSessionFactoryBean.setDataSource(dataSource);
-		localSessionFactoryBean.setAnnotatedClasses(LoginEntity.class);
-		localSessionFactoryBean.setAnnotatedClasses(AccountEntity.class);
-
+		//localSessionFactoryBean.setAnnotatedClasses(LoginEntity.class);
+		//localSessionFactoryBean.setAnnotatedClasses(AccountEntity.class);
+		
 		return localSessionFactoryBean;
 	}
 

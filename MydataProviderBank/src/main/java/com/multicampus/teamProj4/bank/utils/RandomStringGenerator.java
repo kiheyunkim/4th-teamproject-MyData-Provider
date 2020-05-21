@@ -7,7 +7,7 @@ public class RandomStringGenerator {
 		StringBuilder str = new StringBuilder();
 		int length = seedStr.length();
 		for (int i = 0; i < requestLength; ++i) {
-			str.append(seedStr.charAt((int)Math.random() *length));
+			str.append(seedStr.charAt((int)(Math.random() * length)));
 		}
 		
 		return str.toString();
