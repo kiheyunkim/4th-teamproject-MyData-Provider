@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import com.multicampus.teamProj4.bank.account.Exception.RepositoryException;
+import com.multicampus.teamProj4.bank.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.account.Service.AccountService;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
 import com.multicampus.teamProj4.bank.config.SpringConfiguration;

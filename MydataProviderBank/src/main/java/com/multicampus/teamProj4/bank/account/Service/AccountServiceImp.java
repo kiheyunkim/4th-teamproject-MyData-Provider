@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.multicampus.teamProj4.bank.account.Exception.RepositoryException;
+import com.multicampus.teamProj4.bank.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.account.Repository.AccountRepository;
 import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;

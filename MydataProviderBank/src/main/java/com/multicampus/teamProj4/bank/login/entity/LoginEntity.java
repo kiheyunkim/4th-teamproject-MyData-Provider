@@ -1,73 +1,82 @@
 package com.multicampus.teamProj4.bank.login.entity;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "Login")
 public class LoginEntity {
 	@Id
-	@Column(name = "PIN_NUMBER",unique = true, length = 64)
-	private String pinNumber;
+	@Column
+	private String id;
+	@Column
+	private String password;
+	@Column
+	private String salt;
+	@Column
+	private String identifyStr;
+	@Column // for 공인인증
+	private String uniqueStr;
 
-	@Column(name = "FINGERPRINT",unique = true, length = 64)
-	private String fingerPrint;
-	
 	public LoginEntity() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public LoginEntity(String pinNumber, String fingerPrint) {
-		this.pinNumber = pinNumber;
-		this.fingerPrint = fingerPrint;
-	}
-	
-	public String getPinNumber() {
-		return pinNumber;
-	}
-	
-	public void setPinNumber(String pinNumber) {
-		this.pinNumber = pinNumber;
-	}
-	
-	public String getFingerPrint() {
-		return fingerPrint;
-	}
-	
-	public void setFingerPrint(String fingerPrint) {
-		this.fingerPrint = fingerPrint;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((fingerPrint == null) ? 0 : fingerPrint.hashCode());
-		result = prime * result + ((pinNumber == null) ? 0 : pinNumber.hashCode());
-		return result;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		LoginEntity other = (LoginEntity) obj;
-		if (fingerPrint == null) {
-			if (other.fingerPrint != null)
-				return false;
-		} else if (!fingerPrint.equals(other.fingerPrint))
-			return false;
-		if (pinNumber == null) {
-			if (other.pinNumber != null)
-				return false;
-		} else if (!pinNumber.equals(other.pinNumber))
-			return false;
-		return true;
+	public LoginEntity(String id, String password, String salt, String identifyStr) 
+			throws NoSuchAlgorithmException {
+		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+		byte[] uniqueStr = messageDigest.digest((id + password+salt+identifyStr).getBytes());
+		
+		this.id = id;
+		this.password = password;
+		this.salt = salt;
+		this.identifyStr = identifyStr;
+		this.uniqueStr = Base64.getEncoder().encodeToString(uniqueStr);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
+
+	public String getIndentifyStr() {
+		return identifyStr;
+	}
+
+	public void setIndentifyStr(String indentifyStr) {
+		this.identifyStr = indentifyStr;
+	}
+
+	public String getUniqueStr() {
+		return uniqueStr;
+	}
+
+	public void setUniqueStr(String uniqueStr) {
+		this.uniqueStr = uniqueStr;
 	}
 }

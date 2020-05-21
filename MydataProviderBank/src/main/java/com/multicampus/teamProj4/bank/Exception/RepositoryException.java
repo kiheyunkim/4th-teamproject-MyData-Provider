@@ -1,4 +1,4 @@
-package com.multicampus.teamProj4.bank.account.Exception;
+package com.multicampus.teamProj4.bank.Exception;
 
 import org.springframework.dao.DataAccessException;
 

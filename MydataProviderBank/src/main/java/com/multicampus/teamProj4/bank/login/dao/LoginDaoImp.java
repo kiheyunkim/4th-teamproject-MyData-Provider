@@ -17,24 +17,15 @@ public class LoginDaoImp implements LoginDao{
 	
 	@Override
 	public void addFingerPrint(String pin, String fingerprint){
-		Session session = sessionFactory.getCurrentSession();
-		LoginEntity loginEntity = new LoginEntity(pin, fingerprint);
-		session.persist(loginEntity);
-		session.flush();
 	}
 
 	@Override
 	public String getFingerPrint(String pinNumber) {
-		Session session = sessionFactory.getCurrentSession();
-		LoginEntity loginEntity = session.find(LoginEntity.class, pinNumber);
-		return loginEntity == null ? null : loginEntity.getPinNumber();
+		return null;
 	}
 
 	@Override
 	public void deleteFingerPrint(String pin, String fingerprint){
-		Session session = sessionFactory.getCurrentSession();
-		LoginEntity loginEntity = new LoginEntity(pin, fingerprint);
-		session.delete(loginEntity);
 	}
 
 }
