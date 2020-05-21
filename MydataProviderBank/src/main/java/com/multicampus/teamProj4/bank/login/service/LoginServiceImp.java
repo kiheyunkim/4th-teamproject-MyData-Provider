@@ -25,22 +25,21 @@ public class LoginServiceImp implements LoginService{
 	@Override
 	@Transactional
 	public Boolean registerLoginInfo(String id, String password, String identifyStr) {
-		/*
-		 * String randomString = RandomStringGenerator.getRandomString(100); try {
-		 * MessageDigest messageDigest = MessageDigest.getInstance("SHA-256"); byte[]
-		 * salt = messageDigest.digest(randomString.getBytes()); String saltStr =
-		 * Base64.getEncoder().encodeToString(salt);
-		 * 
-		 * byte[] hashedPassword = messageDigest.digest((password +
-		 * saltStr).getBytes()); String hashedPasswordStr =
-		 * Base64.getEncoder().encodeToString(hashedPassword);
-		 * 
-		 * LoginEntity loginEntity = new LoginEntity(id, hashedPasswordStr, saltStr,
-		 * identifyStr); loginRepository.save(loginEntity);
-		 * 
-		 * } catch (NoSuchAlgorithmException e) { throw new
-		 * RepositoryException(RepositoryExceptionType.LOGIN_ERROR_OCCURED); }
-		 */
+		String randomString = RandomStringGenerator.getRandomString(100);
+		try {
+			MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+			byte[] salt = messageDigest.digest(randomString.getBytes());
+			String saltStr = Base64.getEncoder().encodeToString(salt);
+
+			byte[] hashedPassword = messageDigest.digest((password + saltStr).getBytes());
+			String hashedPasswordStr = Base64.getEncoder().encodeToString(hashedPassword);
+
+			LoginEntity loginEntity = new LoginEntity(id, hashedPasswordStr, saltStr, identifyStr);
+			loginRepository.save(loginEntity);
+
+		} catch (NoSuchAlgorithmException e) {
+			throw new RepositoryException(RepositoryExceptionType.LOGIN_ERROR_OCCURED); }
+		 
 		return true;
 	}
 

@@ -1,4 +1,4 @@
-package com.multicampus.teamProj4.bank.account.Service;
+package com.multicampus.teamProj4.bank.account.service;
 
 import java.util.List;
 

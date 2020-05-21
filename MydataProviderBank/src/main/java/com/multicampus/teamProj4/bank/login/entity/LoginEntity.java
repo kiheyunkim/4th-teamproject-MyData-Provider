@@ -7,9 +7,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.Id;
 
 import com.multicampus.teamProj4.bank.utils.RandomStringGenerator;
 
@@ -25,7 +25,7 @@ public class LoginEntity {
 	private String salt;
 	@Column(unique = true)
 	private String identifyStr;
-	@Column(unique = true) // for ∞¯¿Œ¿Œ¡ı
+	@Column(unique = true) // for Í≥µÏù∏Ïù∏Ï¶ùÏÑú
 	private String uniqueStr;
 
 	public LoginEntity() {
