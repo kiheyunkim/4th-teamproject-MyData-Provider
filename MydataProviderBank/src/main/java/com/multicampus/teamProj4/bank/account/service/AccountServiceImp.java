@@ -1,6 +1,5 @@
-package com.multicampus.teamProj4.bank.account.Service;
+package com.multicampus.teamProj4.bank.account.service;
 
-import static org.mockito.Mockito.doThrow;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -13,9 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.Exception.RepositoryExceptionType;
-import com.multicampus.teamProj4.bank.account.Repository.AccountRepository;
 import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
+import com.multicampus.teamProj4.bank.account.repository.AccountRepository;
 import com.multicampus.teamProj4.bank.utils.RandomStringGenerator;
 
 @Service

@@ -11,14 +11,17 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
-import com.multicampus.teamProj4.bank.account.Service.AccountService;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
+import com.multicampus.teamProj4.bank.account.service.AccountService;
 import com.multicampus.teamProj4.bank.config.SpringConfiguration;
+import com.multicampus.teamProj4.bank.config.SpringMVCConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringConfiguration.class }, loader = AnnotationConfigContextLoader.class)
+@WebAppConfiguration
+@ContextConfiguration(classes = { SpringConfiguration.class, SpringMVCConfiguration.class }, loader = AnnotationConfigContextLoader.class)
 
 public class TestClass {
 
@@ -33,6 +36,20 @@ public class TestClass {
 		// System.out.println(loginDao);
 	}
 
+	@Ignore
+	@Test
+	public void add() {
+		try {
+			accountService.addAccount("1234", AccountType.DEPOSIT, "12344");
+		} catch (EntityNotFoundException e) {	
+			System.out.println("Not Found");
+		} catch (RepositoryException e) {
+			System.out.println("password Not Match");
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 	@Test
 	public void addBal() {
 		accountService.addBalance(10L, 4L);
@@ -58,19 +75,7 @@ public class TestClass {
 		accountService.withdrawTo(4L, 1L, 1L, "1234");
 	}
 	
-	@Test
-	@Ignore
-	public void add() {
-		try {
-			accountService.addAccount("1234", AccountType.DEPOSIT, "12344");
-		} catch (EntityNotFoundException e) {	
-			System.out.println("Not Found");
-		} catch (RepositoryException e) {
-			System.out.println("password Not Match");
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
+	
 
 	@Test
 	@Ignore
