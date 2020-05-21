@@ -20,7 +20,6 @@ import com.multicampus.teamProj4.bank.config.SpringConfiguration;
 import com.multicampus.teamProj4.bank.config.SpringMVCConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
 @ContextConfiguration(classes = { SpringConfiguration.class, SpringMVCConfiguration.class }, loader = AnnotationConfigContextLoader.class)
 
 public class TestClass {
