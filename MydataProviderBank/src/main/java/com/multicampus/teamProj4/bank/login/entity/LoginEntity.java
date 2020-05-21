@@ -3,12 +3,15 @@ package com.multicampus.teamProj4.bank.login.entity;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.springframework.data.annotation.Id;
+
+import com.multicampus.teamProj4.bank.utils.RandomStringGenerator;
 
 @Entity
 @Table(name = "Login")
@@ -31,7 +34,9 @@ public class LoginEntity {
 	public LoginEntity(String id, String password, String salt, String identifyStr) 
 			throws NoSuchAlgorithmException {
 		MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
-		byte[] uniqueStr = messageDigest.digest((id + password+salt+identifyStr).getBytes());
+		byte[] uniqueStr = messageDigest.digest((id + password +
+				salt + identifyStr + (new Date(System.currentTimeMillis()).toString() +
+						RandomStringGenerator.getRandomString(50))).getBytes());
 		
 		this.id = id;
 		this.password = password;
