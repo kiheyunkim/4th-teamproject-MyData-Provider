@@ -6,7 +6,15 @@ import com.multicampus.teamProj4.bank.account.entity.AccountEntity;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
 
 public interface AccountService {
-	public Long getBalance(long id, String password);
 	public Boolean addAccount(String password, AccountType type, String identify);
-	public List<AccountEntity> getUserAccount(String identify);
+
+	public Long getBalance(Long accountNum, String password);
+
+	public Long addBalance(Long money, Long accountNum);
+
+	public Long withdraw(Long accountNum, Long money, String password);
+
+	public Long withdrawTo(Long accountNum, Long accountFrom, Long accountTo, String password);
+
+	public List<AccountEntity> getUserAccounts(String identify);
 }

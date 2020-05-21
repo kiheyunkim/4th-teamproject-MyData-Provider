@@ -16,5 +16,4 @@ public class RepositoryException extends DataAccessException {
 	public Long getErrorType() {
 		return errorNum;
 	}
-	
 }
