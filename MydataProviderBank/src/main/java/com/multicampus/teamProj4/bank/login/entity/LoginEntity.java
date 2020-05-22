@@ -23,9 +23,9 @@ public class LoginEntity {
 	private String password;
 	@Column
 	private String salt;
-	@Column(unique = true)
+	@Column
 	private String identifyStr;
-	@Column(unique = true) // for 공인인증서
+	@Column // for 공인인증서
 	private String uniqueStr;
 
 	public LoginEntity() {
