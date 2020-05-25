@@ -1,0 +1,35 @@
+footer{
+  background-color: #777777;
+  height: 180px;
+  color: #cecece;
+  font-size: 14px;
+  padding: 30px 0;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  margin-top: 90px;
+}
+#first_footer li{
+  display: inline-block;
+  margin-right: 15px;
+}
+#first_footer li span, #corp_area address span{
+  font-weight: bold;
+  color: #fff;
+}
+#corp_area address, #corp_area>span{
+  display: inline-block;
+  font-size: 18px;
+  margin: 15px 15px 0 0;
+}
+#top_btn{
+  position: absolute;
+  right: 20px;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #4F4D4C;
+  color: #fff;
+  cursor: pointer;
+}

@@ -1,0 +1,137 @@
+.content h2{
+  font-size: 28px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dbdbdb;
+}
+.content #login_option{
+  text-align: right;
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  padding: 30px 0 15px 0;
+  background-color: transparent;
+}
+
+#login_group{
+  border: 1px solid #B7BBD1;
+  padding: 30px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  height: 300px;
+}
+#login_group section{
+  width: 33.3%;
+  padding: 30px 30px;
+  text-align: center;
+  font-size: 14px;
+}
+#login_group section:nth-of-type(1){
+  padding-left: 0 !important;
+  border-right: 1px solid #dbdbdb;
+}
+#login_group section:nth-of-type(3){
+  padding-right: 0 !important;
+  border-left: 1px solid #dbdbdb;
+}
+
+/* 공인인증서 */
+#login_certificate, #login_SOL{
+  width: 100%;
+  height: 100px;
+  background-color: #3579D4;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+#login_group section:nth-of-type(1) form{
+  margin-top: 15px;
+}
+#login_group section:nth-of-type(1) form strong{
+  font-weight: normal;
+  margin-right: 15px;
+}
+#login_group section:nth-of-type(1) form input{
+  
+  display: inline;
+  vertical-align: bottom;
+  margin-right: 4px;
+  margin-left: 10px;
+}
+#login_group section:nth-of-type(1) ul{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+#login_group section:nth-of-type(1) ul li{
+  font-size: 12px;
+}
+#login_group section:nth-of-type(1) ul li:nth-of-type(2) a{ 
+  padding: 0 10px;
+  border-right: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+}
+
+/* 쏠패스 */
+#login_SOL{
+  background-color: #C28F4E;
+}
+#login_group section:nth-of-type(2) p{
+  width: 54%;
+  margin: 0 auto;
+  margin-top: 32px;
+  line-height: 1.5;
+}
+#login_group section:nth-of-type(2) p span{
+  font-size: 12px;
+  color: #777;
+}
+
+/* 아이디 비밀번호 */
+#login_group section:nth-of-type(3) form{
+  display: flex;
+  justify-content: space-between;
+}
+#login_group section:nth-of-type(3) form p{
+  display: flex;
+  flex-wrap: wrap;
+  width: 60%;
+}
+#login_group section:nth-of-type(3) form p input{
+  width: 100%;
+  padding: 5px 10px;
+  height: 42px;
+  border: 1px solid #b5b5b5;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+#login_group section:nth-of-type(3) form p input:nth-of-type(1){
+  margin-bottom: 15px;
+}
+#login_group section:nth-of-type(3) form a{
+  width: 34%;
+  background-color: #768392;
+  border-radius: 5px;
+  font-size: 20px;
+  line-height: 4.5;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+#login_group section:nth-of-type(3) ul{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+}
+#login_group section:nth-of-type(3) ul li{
+  font-size: 12px;
+}
+#login_group section:nth-of-type(3) ul li a{
+  padding: 0 10px;
+}
+#login_group section:nth-of-type(3) ul li:nth-of-type(2) a{  
+  border-right: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+}

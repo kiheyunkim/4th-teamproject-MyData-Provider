@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>기현은행</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/sub_header.css">
+	<link rel="stylesheet" type="text/css" href="css/sub_accountcheck.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+</head>
+<body>
+	<header>
+		<div id="sub_head_btns">
+			<div class="wrap">
+				<a id="logo" href="index.html">
+					<h1>기현은행</h1>					
+				</a>
+				<ul id="sub_head_menu1">
+					<li>개인</li>
+					<li>기업</li>
+					<li>금융상품</li>
+				</ul>
+				<ul id="sub_head_menu2">
+					<li>서브메뉴1</li>
+					<li>서브메뉴2</li>
+					<li>서브메뉴3</li>
+				</ul>
+				<button id="head_search_btn">검색</button>
+			</div>
+		</div>
+		<nav>
+			<div class="wrap">
+				<ul>
+					<li>조회</li>
+					<li>이체</li>
+					<li>금융상품</li>
+					<li>공과금/법원</li>
+					<li>뱅킹보안관리</li>
+					<li>기타금융</li>
+					<li>부가서비스</li>
+					<li>사용자관리</li>
+					<li>카드/증권</li>
+				</ul>
+				<button id="menunavi">전체</button>
+			</div>
+		</nav>
+		<!-- <div id="head_search"></div> -->
+		<div class="breadcrumbs">
+			<div class="wrap">
+				<ol>
+					<li>개인</li>
+					<li>조회</li>
+					<li>
+						<a href="#">계좌조회</a>
+						<ul>
+							<li>조회</li>
+							<li>이체</li>
+							<li>금융상품</li>
+							<li>공과금/법원</li>
+							<li>뱅킹보안관리</li>
+							<li>기타금융</li>
+							<li>부가서비스</li>
+							<li>사용자관리</li>
+							<li>카드/증권</li>
+						</ul>
+					</li>
+				</ol>
+				<ul id="group_logout" class="right">
+					<li><span class="userName">홍길동</span>님</li>
+					<li>
+						<em id="loginTime">00:00</em>
+						<button id="timeExtending">연장</button>
+					</li>
+					<li><a id="btn_logout" href="index.html">로그아웃</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	<div class="content wrap">
+		<div id="check_title">
+			<div id="title_content">
+				<h3><span class="userName">홍길동</span> 고객님! 안녕하세요.</h3>
+				<p>
+					<em>'미래를 함께하는 따뜻한 금융'</em><br>
+					오늘보다 더 <em>행복</em>한 내일을 함께 이루기 위해<br>
+					고객님과 <em>동행</em>합니다.
+				</p>
+			</div>
+		</div>
+		<div id="check_list">
+			<table id="group_btns_list">
+				<tbody>
+					<tr>
+						<td>예금/신탁</td>
+						<td>ISA</td>
+						<td>대출</td>
+						<td>펀드</td>
+						<td>외환</td>
+						<td>퇴직연금</td>
+						<td>골드/실버</td>
+						<td>보험/노란우산공제</td>
+						<td>휴면예금</td>
+						<td>전체계좌</td>
+					</tr>
+				</tbody>
+			</table>
+			<div id="listcontents"><!-- 위의 버튼 클릭 시 변하는 리스트 부분 -->
+				<table id="savings">
+					<thead>
+						<tr>
+							<th>계좌명</th>
+							<th>계좌번호</th>
+							<th>신규일</th>
+							<th>만기일/최근거래일</th>
+							<th>잔액(원)</th>
+							<th>업무</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="check_list_plus">
+							<td>계좌명</td>
+							<td>000-000-000000</td>
+							<td>0000/00/00</td>
+							<td>0000/000</td>
+							<td>0</td>
+							<td>
+								<a id="btn_accountcheck_more" href="">조회</a>
+								<a id="btn_transfer_more" href="">이체</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+		</div>
+		<p>- 회원 유형에 따라 가입 절차가 다르니 고객님께 해당하는 유형을 선택하여 주시기 바랍니다.</p>
+		<div id="join_btns">
+			<a href="join_individual.html">개인 회원</a>
+			<a href="#">기업 회원</a>
+			<a href="#">i-PIN 회원</a>
+		</div>
+		<div id="join_benefits">
+			<h3>홈페이지 회원혜택</h3>
+			<ol>
+				<li>
+					<span>1</span>
+					<h4>이메일 서비스</h4>
+					<p>기현은행에서는 환율정보 등 다양한 정보를 보내드립니다. (입출내역 E-mail 통지서비스를 신청하신 고객에 한함)</p>
+				</li>
+				<li>
+					<span>2</span>
+					<h4>일반문의 상담</h4>
+					<p>예금, 대출, 인터넷뱅킹 등 궁금하신 점을 홈페이지 고객센터에 등록하시면 빠른 시간내 답변을 드립니다. (상담이 집중될 경우 답변이 다소 지연될 수 있습니다)</p>
+				</li>
+				<li>
+					<span>3</span>
+					<h4>인터넷 전화상담</h4>
+					<p>음성상담, 문자채팅, 전화신청+문자채팅 등 인터넷상에서 전문상담사와 직접 상담을 하실 수 있습니다.</p>
+				</li>
+			</ol>
+		</div>
+	</div>
+	<footer>
+		<div class="wrap">
+			<div id="corp_area">
+				<ul id="first_footer">
+					<li><span>하단메뉴1</span></li>
+					<li><span>하단메뉴2</span></li>
+					<li>하단메뉴3</li>
+					<li>하단메뉴4</li>
+					<li>하단메뉴5</li>
+					<li>하단메뉴6</li>
+					<li>하단메뉴7</li>
+					<li>하단메뉴8</li>
+					<li>하단메뉴9</li>
+					<li>하단메뉴10</li>
+				</ul>
+				<address><span>고객센터 0000-0000</span></address>
+				<span>평일 09:00~18:00 (은행휴무일 제외)</span>
+				<address>copyright</address>
+			</div>
+			<button id="top_btn">top</button>
+		</div>
+	</footer>
+</body>
+</html>
