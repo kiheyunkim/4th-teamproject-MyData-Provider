@@ -1,0 +1,128 @@
+/* 상단영역 */
+header{
+  padding-top: 30px;
+  box-sizing: border-box;
+  height: 100%;
+}
+/* 상단영역_ 퀵메뉴 */
+#sub_head_btns{
+  height: 40px;
+  text-align: right;
+  box-sizing: border-box;
+}
+#sub_head_btns a h1{
+  font-size: 20px;
+  float: left;
+}
+#sub_head_btns ul{
+  display: inline;
+  margin: 0 30px;
+}
+#sub_head_btns ul li{
+  display: inline-block;
+  padding: 4px 10px; 
+  font-size: 14px;
+  box-sizing: border-box;
+  line-height: 1.2;
+}
+#sub_head_menu1{
+  float: left;
+}
+#head_search_btn{
+  background-color: transparent;
+}
+/* #sub_head_menu1 클릭 시 */
+#sub_head_menu1 li:nth-of-type(1){
+  border: 1px solid #aaa;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #2D71C4; 
+}
+
+/* 상단영역_네비게이션 */
+nav{
+  height: 50px;
+  box-sizing: border-box;
+  background-color: #2D71C4;
+  padding: 15px 0;
+}
+nav>div{
+  position: relative;
+}
+nav ul{
+  width: calc(100% - 70px);
+}
+nav ul li{
+  font-size: 16px;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0 15px;
+}
+nav ul li:nth-of-type(1){
+  padding-left: 0;
+}
+#menunavi{
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  width: 50px;
+  height: 40px;
+  background-color: #D99103;
+  box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.4);
+}
+
+/* 상단영역_브레드크럼 */
+.breadcrumbs{
+  background-color: #195DAE;
+  padding: 15px 0;
+}
+.breadcrumbs ol{
+  display: inline;
+}
+.breadcrumbs ol>li{
+  display: inline-block;
+  font-size: 15px;
+  padding-right: 30px;
+  color: #c3ccd5;
+  position: relative;
+}
+.breadcrumbs ol>li::after{
+  content: ">";
+  position: absolute;
+  right: 7px;
+  opacity: 0.5;
+}
+.breadcrumbs ol>li:nth-of-type(4)::after{
+  display: none;
+}
+.breadcrumbs ol>li>a{
+  color: #e4ecf4;
+  font-weight: bold;
+  position: relative;
+}
+.breadcrumbs ol>li>ul{
+  position: absolute;
+  width: 200px;
+  background-color: #5B636C;
+  z-index: 3;
+  left: -15px;
+  top: 30px;
+  display: none;
+}
+.breadcrumbs ol>li>ul>li a{
+  color: #e4ecf4;
+  display: block;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+.breadcrumbs ol>li>ul>li:nth-of-type(1) a{
+  color: #FFCC89;
+}
+.breadcrumbs ol>li>ul>li a:hover{
+  background-color: #353d46;
+}
+.breadcrumbs div>a{
+  color: #e4ecf4;
+  margin-right: 60px;
+}

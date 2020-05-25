@@ -10,6 +10,8 @@ public interface AccountService {
 
 	public Long getBalance(Long accountNum, String password);
 
+	public Long getBalanceWithIdentifyStr(String identifyStr, String accountNumber);
+
 	public Long addBalance(Long money, Long accountNum);
 
 	public Long withdraw(Long accountNum, Long money, String password);

@@ -36,6 +36,15 @@ public class AccountServiceImp implements AccountService {
 
 		return account.getBalance();
 	}
+	
+
+	@Override
+	@Transactional
+	public Long getBalanceWithIdentifyStr(String identifyStr, String accountNumber) {
+		AccountEntity account = accountRepository.findByidentifyAndAccountNumber(identifyStr, Long.parseLong(accountNumber));
+
+		return account.getBalance();
+	}
 
 	@Override
 	@Transactional
@@ -139,5 +148,4 @@ public class AccountServiceImp implements AccountService {
 			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_ERROR_OCCURED);
 		}
 	}
-
 }

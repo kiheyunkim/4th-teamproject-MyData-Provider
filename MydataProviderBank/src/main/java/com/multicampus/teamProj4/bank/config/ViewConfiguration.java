@@ -22,7 +22,7 @@ public class ViewConfiguration {
 		SpringResourceTemplateResolver templateResolver = 
 				new SpringResourceTemplateResolver();
 		templateResolver.setApplicationContext(applicationContext);
-		templateResolver.setPrefix("WEB-INF/thymeleaf/");
+		templateResolver.setPrefix("classpath:/public/");
 		templateResolver.setSuffix(".html");
 		templateResolver.setTemplateMode(TemplateMode.HTML);
 		templateResolver.setCacheable(false);

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>기현은행</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script>
+		$(document).ready(
+			function(){
+				$("#group_navmenu>ul>li>a").hover(
+					function(){
+						$(this).next().toggleClass("group_show");
+					}
+				);
+				$("#group_navmenu>ul>li>ul").hover(
+					function(){
+						$(this).toggleClass("group_show");
+					}
+				);
+			}
+
+		);
+	</script>
+</head>
+<body>
+	<header>
+		<div id="head_btns">
+			<div class="wrap">
+				<ul>
+					<li>메뉴1</li>
+					<li>메뉴2</li>
+					<li>메뉴3</li>
+					<li>메뉴4</li>
+					<li>메뉴5</li>
+				</ul>
+				<button id="head_search_btn">검색</button>
+			</div>
+		</div>
+		<nav>
+			<div class="wrap">
+				<a id="logo" href="index.html">
+					<h1>기현은행</h1>
+				</a>
+				<a id="head_login" href="login.html">로그인</a>
+				<div id="group_navmenu" class="right">
+					<ul>
+						<li>
+							<a id="btn_individual" href="">개인</a>
+							<ul id="group_individual">
+								<li><a href="accountcheck.html">조회</a></li>
+								<li>이체</li>
+								<li>금융상품</li>
+								<li>공과금/법원</li>
+								<li>뱅킹보안관리</li>
+								<li>기타금융</li>
+								<li>부가서비스</li>
+								<li>사용자관리</li>
+								<li>카드/증권</li>
+							</ul>
+						</li>
+						<li>
+							<a id="btn_enterprise" href="">기업</a>
+							<ul id="group_enterprise">
+								<li>기업상품몰</li>
+								<li>중소기업지원센터</li>
+								<li>공인인증센터</li>
+								<li>기업고객지원</li>
+								<li>자금관리</li>
+								<li>보안센터</li>
+								<li>기업서식함</li>
+							</ul>
+						</li>
+						<li>
+							<a id="btn_goods" href="">금융상품</a>
+							<ul id="group_goods">
+								<li>예금/신탁</li>
+								<li>ISA</li>
+								<li>대출</li>
+								<li>펀드</li>
+								<li>외환</li>
+								<li>퇴직연금</li>
+								<li>골드/실버</li>
+								<li>보험/공제</li>
+								<li>미션플러스</li>
+							</ul>
+						</li>
+					</ul>
+					<button id="menunavi">전체</button>
+				</div>
+			</div>
+		</nav>
+			<!-- <div id="head_search"></div> -->
+	</header>
+	<div class="content">
+		<!-- <article id="main_title">
+			<div class="wrap">
+				<section id="main_goods">
+					<h2>금융상품</h2>
+					<ul id="group_goods">
+						<li><a href="" id="btn_deposit">예금</a></li>
+						<li><a href="" id="btn_transfer">이체</a></li>
+						<li><a href="" id="btn_fund">펀드</a></li>
+						<li><a href="" id="btn_loan">대출</a></li>
+						<li><a href="" id="btn_exchange">외환</a></li>
+						<li><a href="" id="btn_rpension">연금</a></li>
+					</ul>
+				</section>
+			</div>
+		</article> -->
+		<!-- <article id="main_service">
+			<div class="wrap">
+				<section id="main_mainmenu"></section>
+				<section id="main_notice" class="left"></section>
+				<section id="main_submenu" class="right"></section>
+			</div>
+		</article> -->
+		<!-- <article id="main_recommend">
+			<div class="wrap">
+				<ul>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</article> -->
+	</div>
+	<footer>
+		<div class="wrap">
+			<div id="corp_area">
+				<ul id="first_footer">
+					<li><span>하단메뉴1</span></li>
+					<li><span>하단메뉴2</span></li>
+					<li>하단메뉴3</li>
+					<li>하단메뉴4</li>
+					<li>하단메뉴5</li>
+					<li>하단메뉴6</li>
+					<li>하단메뉴7</li>
+					<li>하단메뉴8</li>
+					<li>하단메뉴9</li>
+					<li>하단메뉴10</li>
+				</ul>
+				<address><span>고객센터 0000-0000</span></address>
+				<span>평일 09:00~18:00 (은행휴무일 제외)</span>
+				<address>copyright</address>
+			</div>
+			<button id="top_btn">top</button>
+		</div>
+	</footer>
+</body>
+</html>

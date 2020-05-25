@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>기현은행</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/sub_header.css">
+	<link rel="stylesheet" type="text/css" href="css/sub_join_individual.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script src="http://d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
+	<script>
+	 	$(function(){
+	 			$("#postcodify_search_button").postcodifyPopUp(); 
+	 		}
+	 	); 
+	</script>
+</head>
+<body>
+	<header>
+		<div id="sub_head_btns">
+			<div class="wrap">
+				<a id="logo" href="index.html">
+					<h1>기현은행</h1>					
+				</a>
+				<ul id="sub_head_menu1">
+					<li>개인</li>
+					<li>기업</li>
+					<li>금융상품</li>
+				</ul>
+				<ul id="sub_head_menu2">
+					<li>서브메뉴1</li>
+					<li>서브메뉴2</li>
+					<li>서브메뉴3</li>
+				</ul>
+				<button id="head_search_btn">검색</button>
+			</div>
+		</div>
+		<nav>
+			<div class="wrap">
+				<ul>
+					<li>네비메뉴1</li>
+					<li>네비메뉴2</li>
+					<li>네비메뉴3</li>
+					<li>네비메뉴4</li>
+					<li>네비메뉴5</li>
+					<li>네비메뉴6</li>
+				</ul>
+				<button id="menunavi">전체</button>
+			</div>
+		</nav>
+		<!-- <div id="head_search"></div> -->
+		<div class="breadcrumbs">
+			<div class="wrap">
+				<ol>
+					<li>고객센터</li>
+					<li>회원서비스</li>
+					<li>회원가입</li>
+					<li>
+						<a href="#">개인회원가입</a>
+						<ul>
+							<li><a href="join.html">회원가입안내</a></li>
+							<li><a href="join_individual.html">개인회원가입</a></li>
+							<li><a href="#">기업회원가입</a></li>
+							<li><a href="#">i-PIN 회원가입</a></li>
+							<li><a href="#">i-PIN→개인회원전환</a></li>
+						</ul>
+					</li>
+				</ol>
+				<a href="login.html" class="right">로그인</a>
+			</div>
+		</div>
+	</header>
+	<div class="content wrap">
+		<h2>개인회원가입</h2>
+		<div id="join_process_1">
+			<div id="join_step_1">
+				<ol class="join_step_info">
+					<li class="step_now">1<em>이용약관동의</em></li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ol>
+				<div id="join_TOS">
+					<h3>기현은행 홈페이지 회원 서비스 이용약관</h3>
+					<button class="more">보기</button>
+					<form>
+						<p>홈페이지 회원 서비스 이용약관에 동의하십니까?</p>
+						<input class="TOSagree" type="checkbox" name="TOSagree" value="T">예, 동의합니다
+					</form>
+				</div>
+				<div id="join_PPA">
+					<h3>[필수] 홈페이지 개인회원 개인정보 수집 · 이용 동의서</h3>
+					<p>홈페이지 개인회원 개인정보 수집 · 이용 동의서를 확인하시고 개인정보 수집 · 이용에 동의하셔야 합니다.</p>
+					<button class="more">보기</button>
+					<form>
+						<p>기현은행이 본인의 개인정보를 수집·이용하는 것에 동의합니다.</p>
+						<input class="PPAagree_N" type="radio" name="PPAagree" value="N">동의하지 않음
+						<input class="PPAagree_Y" type="radio" name="PPAagree" value="Y">동의함
+					</form>
+				</div>
+				<div class="join_step_btns">
+					<a href="join_individual.html" id="join_cancel" class="step_btn prev">취소</a>
+					<button id="btn_step_2" class="step_btn next">확인</button>
+				</div>
+			</div>
+			<div id="join_step_2">
+				<ol class="join_step_info">
+					<li>1</li>
+					<li class="step_now">2<em>본인확인</em></li>
+					<li>3</li>
+					<li>4</li>
+					<li>5</li>
+				</ol>
+				<div id="join_userinfo">
+					<h3>개인정보 등록</h3>
+					<table>
+						<tbody>
+							<tr>
+								<th>[필수] 성명</th>
+								<td><input id="userName" type="text" name="userName"></td>
+							</tr>
+							<tr>
+								<th>[필수] 생년월일</th>
+								<td><input id="userBirth" class="letter_6" type="text" name="userBirth" placeholder="주민번호 앞 6자리"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div id="join_accountnum">
+					<h3>기현은행 계좌등록</h3>
+					<table>
+						<tbody>
+							<tr>
+								<th>[필수] 계좌번호</th>
+								<td>
+									<input id="accountNum_front" class="letter_3" type="text" name="userAccountnum"> -
+									<input id="accountNum_mid" class="letter_3" type="text" name="userAccountnum"> -
+									<input id="accountNum_end" class="letter_6" type="password" name="userAccountnum">
+								</td>
+							</tr>
+							<tr>
+								<th>[필수] 계좌비밀번호</th>
+								<td><input id="accountPW" class="letter_4" type="password" name="userAccountpw" placeholder="숫자 4자리"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="join_step_btns">
+					<button id="btn_step_3" class="step_btn next">확인</button>
+				</div>
+			</div>
+			<div id="join_step_3">
+				<ol class="join_step_info">
+					<li>1</li>
+					<li>2</li>
+					<li class="step_now">3<em>기본정보입력</em></li>
+					<li>4</li>
+					<li>5</li>
+				</ol>
+				<div id="join_basicinput">
+					<h3>기본입력사항</h3>
+					<table>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td><input id="userName" type="text" name="userName" readonly></td>
+							</tr>
+							<tr>
+								<th>주민등록번호</th>
+								<td>
+									<input id="userBirth" type="text" name="userBirth" readonly> -
+									<input id="userSocialNum" type="password" value="1234567" readonly>
+								</td>
+							</tr>
+							<tr>
+								<th>[필수] 아이디</th>
+								<td>
+									<input id="userID" class="letter_16" type="text" name="userID" placeholder="영문,숫자,대소문자 구분없이 6-16자 이내">
+									<button id="btn_userID" class="check_btn">아이디중복확인</button>
+								</td>
+							</tr>
+							<tr>
+								<th>[필수] 비밀번호</th>
+								<td><input id="userPW" type="password" name="userPW" placeholder="비밀번호"></td>
+							</tr>
+							<tr>
+								<th>[필수] 비밀번호 확인</th>
+								<td><input id="userPW_check" type="password" name="userPW_check" placeholder="비밀번호확인"></td>
+							</tr>
+							<tr>
+								<th>[선택] 자택우편번호</th>
+								<td>
+									<input id="userPostnum" class="postcodify_postcode5" type="text" name="userPostnum" readonly>
+									<button id="postcodify_search_button">주소찾기</button>
+								</td>
+							</tr>
+							<tr>
+								<th>[선택] 자택주소</th>
+								<td><input id="userAddress" class="postcodify_address" type="text" name="userAddress" readonly></td>
+							</tr>
+							<tr>
+								<th>[선택] 지역주소(동 이하)</th>
+								<td><input id="userAddress_detail" class="postcodify_details" type="text" name="userAddress_detail"></td>
+							</tr>
+							<tr>
+								<th>[필수] 자택전화번호</th>
+								<td>
+									<select id="userTelnum_front" name="areacode">
+										<option value="02">02</option>
+										<option value="031">031</option>
+										<option value="032">032</option>
+										<option value="033">033</option>
+										<option value="041">041</option>
+										<option value="042">042</option>
+										<option value="043">043</option>
+										<option value="044">044</option>
+										<option value="051">051</option>
+										<option value="052">052</option>
+										<option value="053">053</option>
+										<option value="054">054</option>
+										<option value="055">055</option>
+										<option value="061">061</option>
+										<option value="062">062</option>
+										<option value="063">063</option>
+										<option value="064">064</option>
+										<option value="064">070</option>
+									</select> -
+									<input id="userTelnum_mid" type="text" name="tel_mid"> -
+									<input id="userTelnum_end" type="text" name="tel_end">
+									<input class="btn_none" type="checkbox" name="tel_none">없음
+								</td>
+							</tr>
+							<tr>
+								<th>[필수] 핸드폰</th>
+								<td>
+									<select id="userMobilenum_front" name="mobile_front">
+										<option value="010">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="019">019</option>
+									</select> -
+									<input id="userMobilenum_mid" type="text" name="mobile_mid"> -
+									<input id="userMobilenum_end" type="text" name="mobile_end">
+									<input class="btn_none" type="checkbox" name="mobile_none">없음
+								</td>
+							</tr>
+							<tr>
+								<th>[선택] 이메일</th>
+								<td>
+									<input id="userEmailID" type="text" name="userEmailID">@
+									<input id="userEmail_domain" type="text" name="userEmail_domain">
+									<select id="userEmail_domain_list" name="userEmail_domain">
+										<option value="etc">직접입력</option>
+										<option value="naver">naver.com</option>
+										<option value="gmail">gmail.com</option>
+										<option value="hanmail">hanmail.net</option>
+									</select>
+									<p>* 모든 이메일 서비스는 입력하신 이메일로 발송되며 최신 금융정보를 제공하여 드립니다.</p>
+									<form id="userEmail_agree">
+										<p>기현은행에서 제공하는 상품정보(이벤트 포함) 및 최신 금융정보를 이메일로 받아보시겠습니까?</p>
+										<input type="radio" name="emailAgree" value="T">예
+										<input type="radio" name="emailAgree" value="F">아니요
+									</form>
+								</td>
+							</tr>
+							<tr>
+								<th>[선택] 이메일 서비스</th>
+								<td>
+									<input id="check_service" type="checkbox" name="serviceAgree" value="T">환율정보
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="join_step_btns">
+						<button id="btn_re_step_2" class="step_btn prev">이전</button>
+						<button id="btn_step_4" class="step_btn next">확인</button>
+					</div>
+				</div>
+			</div>
+			<div id="join_step_4">
+				<ol class="join_step_info">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li class="step_now">4<em>정보입력확인</em></li>
+					<li>5</li>
+				</ol>
+				<div id="join_infocheck">
+					<h3>기본입력사항 확인</h3>
+					<table>
+						<tbody>
+							<tr>
+								<th>성명</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>주민등록번호</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>아이디</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>자택주소</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>자택전화번호</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>휴대폰</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>이메일</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>이메일 서비스</th>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="join_step_btns">
+						<button id="btn_re_step_3" class="step_btn prev">이전</button>
+						<button id="btn_step_5" class="step_btn next">확인</button>
+					</div>
+				</div>
+			</div>
+			<div id="join_step_5">
+				<ol class="join_step_info">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+					<li class="step_now">5<em>회원가입완료</em></li>
+				</ol>
+				<div id="join_complete">
+					<p><span class="userName">홍길동</span>고객님<br>기현은행 회원가입이 완료되었습니다.</p>
+					<p>기현은행 홈페이지 회원이 되신 것을 환영합니다.<br>기현은행은 편리한 홈페이지 서비스를 제공하기 위하여 더욱 최선을 다하겠습니다.</p>
+				</div>
+				<div class="join_step_btns">
+					<a href="login.html" id="join_login" class="step_btn next">홈페이지 로그인</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="wrap">
+			<div id="corp_area">
+				<ul id="first_footer">
+					<li><span>하단메뉴1</span></li>
+					<li><span>하단메뉴2</span></li>
+					<li>하단메뉴3</li>
+					<li>하단메뉴4</li>
+					<li>하단메뉴5</li>
+					<li>하단메뉴6</li>
+					<li>하단메뉴7</li>
+					<li>하단메뉴8</li>
+					<li>하단메뉴9</li>
+					<li>하단메뉴10</li>
+				</ul>
+				<address><span>고객센터 0000-0000</span></address>
+				<span>평일 09:00~18:00 (은행휴무일 제외)</span>
+				<address>copyright</address>
+			</div>
+			<button id="top_btn">top</button>
+		</div>
+	</footer>
+</body>
+</html>
