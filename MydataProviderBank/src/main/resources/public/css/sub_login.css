@@ -35,7 +35,7 @@
   border-left: 1px solid #dbdbdb;
 }
 
-/* 공인인증서 */
+/* 怨듭씤�씤利앹꽌 */
 #login_certificate, #login_SOL{
   width: 100%;
   height: 100px;
@@ -74,7 +74,7 @@
   border-left: 1px solid #dbdbdb;
 }
 
-/* 쏠패스 */
+/* �룧�뙣�뒪 */
 #login_SOL{
   background-color: #C28F4E;
 }
@@ -89,7 +89,7 @@
   color: #777;
 }
 
-/* 아이디 비밀번호 */
+/* �븘�씠�뵒 鍮꾨�踰덊샇 */
 #login_group section:nth-of-type(3) form{
   display: flex;
   justify-content: space-between;

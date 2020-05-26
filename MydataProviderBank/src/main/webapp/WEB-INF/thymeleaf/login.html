@@ -64,16 +64,16 @@
 				</ul>
 			</section>
 			<section>
-				<button id="login_SOL">쏠패스 로그인</button>
-				<p>SOL 앱 연동하여 로그인!<span>(뱅크사인 이용 가능)</span></p>
+				<button id="login_SOL">DID 로그인</button>
+				<p>DID로 로그인!</p>
 			</section>
 			<section>
-				<form action="">
+				<form action="./loginRequest" method="post">
 					<p>
-						<input type="text" name="name">
+						<input type="text" name="id">
 						<input type="password" name="password">
 					</p>
-					<a href="#" id="login_input">ID 로그인</a>
+					<input type="submit" id="login_input">ID 로그인
 				</form>
 				<ul>
 					<li><a href="#">아이디 찾기</a></li>
