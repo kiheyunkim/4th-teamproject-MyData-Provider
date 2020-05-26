@@ -11,18 +11,18 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.account.entity.AccountType;
 import com.multicampus.teamProj4.bank.account.service.AccountService;
-import com.multicampus.teamProj4.bank.config.SpringConfiguration;
-import com.multicampus.teamProj4.bank.config.SpringMVCConfiguration;
+import com.multicampus.teamProj4.bank.config.SpringConfigurationForTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = { SpringConfiguration.class, SpringMVCConfiguration.class }, loader = AnnotationConfigContextLoader.class)
-
+@WebAppConfiguration
+@ContextConfiguration(classes = {SpringConfigurationForTest.class},loader = AnnotationConfigContextLoader.class)
 public class TestClass {
-
+	
 	@Autowired
 	private ApplicationContext applicationContext;
 
@@ -31,7 +31,6 @@ public class TestClass {
 	@Before
 	public void init() {
 		accountService = applicationContext.getBean(AccountService.class);
-		// System.out.println(loginDao);
 	}
 
 	@Ignore

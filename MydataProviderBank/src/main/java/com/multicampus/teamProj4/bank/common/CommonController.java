@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CommonController {
 	@GetMapping("/")
 	public String mainIndex() {
-		return "index.html";
+		return "index";
 	}
 }

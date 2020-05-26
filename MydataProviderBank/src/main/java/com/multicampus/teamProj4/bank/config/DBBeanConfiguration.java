@@ -3,6 +3,7 @@ package com.multicampus.teamProj4.bank.config;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import org.hibernate.cfg.AvailableSettings;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.mock.web.MockServletContext;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;

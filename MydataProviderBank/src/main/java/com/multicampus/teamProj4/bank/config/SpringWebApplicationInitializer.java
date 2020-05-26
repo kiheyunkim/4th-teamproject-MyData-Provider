@@ -9,7 +9,7 @@ public class SpringWebApplicationInitializer
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[] {SpringConfiguration.class, SpringMVCConfiguration.class};
+		return new Class[] {SpringConfiguration.class};
 	}
 
 	@Override

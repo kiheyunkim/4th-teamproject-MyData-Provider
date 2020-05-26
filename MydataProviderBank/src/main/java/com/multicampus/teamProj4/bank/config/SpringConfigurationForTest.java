@@ -15,7 +15,7 @@ import com.multicampus.teamProj4.bank.user.reposiroty.UserRepository;
 //https://www.baeldung.com/spring-webappconfiguration
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = { "com.multicampus.teamProj4.bank.*" }, excludeFilters = @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = { AccountRepository.class, LoginRepository.class, UserRepository.class, SpringConfiguration.class}))
+@ComponentScan(basePackages = { "com.multicampus.teamProj4.bank.*" }, excludeFilters = @Filter(type = FilterType.ASSIGNABLE_TYPE, classes = { AccountRepository.class, LoginRepository.class, UserRepository.class, SpringMVCConfiguration.class , SpringConfiguration.class}))
 @EnableJpaRepositories(basePackageClasses = { AccountRepository.class, LoginRepository.class, UserRepository.class })
-public class SpringConfiguration {
+public class SpringConfigurationForTest {
 }
