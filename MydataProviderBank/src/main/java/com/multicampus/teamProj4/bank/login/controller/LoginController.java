@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
+import com.multicampus.teamProj4.bank.login.entity.LoginEntity;
 import com.multicampus.teamProj4.bank.login.service.LoginService;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.dao.DataAccessException;
@@ -28,44 +30,44 @@ public class LoginController {
 	public LoginController(LoginService loginService) {
 		this.loginService = loginService;
 	}
-	
-	@GetMapping
-	public ModelAndView loginPage(ModelAndView model, @Param(value = "errorType") String resultParam) {
-		model.setViewName("login");
-		model.addObject("status", resultParam);
-		
+
+	@GetMapping("/")
+	public ModelAndView loginPage(ModelAndView model) {	
+		model.setViewName("login");		
 		return model;
 	}
 	
 	@PostMapping("/loginRequest")
-	@ResponseBody
-	public Map<String, Object> loginRequest(HttpSession session,@RequestBody HashMap<String, Object> params){
-		String id = (String) params.get("id");
-		String password = (String) params.get("password");
-		
+	public ModelAndView loginRequest(ModelAndView model, HttpSession session, LoginEntity params){
+		System.out.println(params.getPassword());
+		String id = (String) params.getId();
+		String password = (String) params.getPassword();
 		String identifyStr = null;
-		Map<String, Object> retval = new HashMap<String, Object>();
+		String result = "";
+		
 		try {
 			identifyStr = loginService.checkLoginInfo(id, password);
 		} catch (RepositoryException e) {
 			switch (e.getErrorType()) {
 			case LOGIN_PASSWORD_NOT_MATCH:
-				retval.put("result", "wrong_password");
-				break;
+				result = "login_notMatch";
 			default:
-				retval.put("result", "login_error");
+				result = "login_error";
 				break;
 			}
-		}catch (DataAccessException e) {
-			retval.put("result", "unknown_error");
+		} catch (EntityNotFoundException e) {
+			result = "login_notFound";
 		}
 		
 		if(identifyStr != null) {
 			session.setAttribute("Identity", identifyStr);
-			retval.put("result", "login_ok");
+			model.setViewName("index");
+			return model;
 		}
 		
-		return retval;
+		model.setViewName("login");
+		model.addObject("status", result);
+		return model;
 	}
 }
 
