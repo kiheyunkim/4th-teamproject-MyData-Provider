@@ -7,11 +7,13 @@
 	<link rel="stylesheet" type="text/css" href="/css/sub_header.css">
 	<link rel="stylesheet" type="text/css" href="/css/sub_login.css">
 	<link rel="stylesheet" type="text/css" href="/css/footer.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="/js/login.js"></script>
 </head>
 <body>
 	<script th:inline="javascript">
 		let message = [[${status}]];
-		if(message !== "" || message !== null){
+		if(message !== "" && message !== null){
 			alert(message);			
 		}
 	</script>
@@ -79,7 +81,7 @@
 						<input type="text" name="id">
 						<input type="password" name="password">
 					</p>
-					<input type="submit" id="login_input" value="ID 로그인">
+					<input type="button" id="login_input" value="ID 로그인">
 				</form>
 				<ul>
 					<li><a href="#">아이디 찾기</a></li>

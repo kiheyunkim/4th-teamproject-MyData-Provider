@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
 import com.multicampus.teamProj4.bank.login.entity.LoginEntity;
@@ -38,36 +39,36 @@ public class LoginController {
 	}
 	
 	@PostMapping("/loginRequest")
-	public ModelAndView loginRequest(ModelAndView model, HttpSession session, LoginEntity params){
-		System.out.println(params.getPassword());
+	@ResponseBody
+	public Map<String, Object> loginRequest(ModelAndView model, HttpSession session, LoginEntity params){
 		String id = (String) params.getId();
 		String password = (String) params.getPassword();
 		String identifyStr = null;
-		String result = "";
+		
+		Map<String, Object> result = new HashMap<String, Object>();
 		
 		try {
 			identifyStr = loginService.checkLoginInfo(id, password);
 		} catch (RepositoryException e) {
 			switch (e.getErrorType()) {
 			case LOGIN_PASSWORD_NOT_MATCH:
-				result = "login_notMatch";
+				result.put("result", "login_notMatch");
 			default:
-				result = "login_error";
+				result.put("result", "login_error");
 				break;
 			}
+			return result;
+			
 		} catch (EntityNotFoundException e) {
-			result = "login_notFound";
+			result.put("result", "login_notFound");
+			return result;
 		}
 		
 		if(identifyStr != null) {
 			session.setAttribute("Identity", identifyStr);
-			model.setViewName("index");
-			return model;
 		}
 		
-		model.setViewName("login");
-		model.addObject("status", result);
-		return model;
+		return result;
 	}
 }
 
