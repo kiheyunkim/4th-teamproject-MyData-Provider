@@ -6,13 +6,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.multicampus.teamProj4.bank.Exception.RepositoryException;
+import com.multicampus.teamProj4.bank.login.entity.LoginEntity;
 import com.multicampus.teamProj4.bank.login.service.LoginService;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.dao.DataAccessException;
@@ -28,44 +31,52 @@ public class LoginController {
 	public LoginController(LoginService loginService) {
 		this.loginService = loginService;
 	}
-	
-	@GetMapping
-	public ModelAndView loginPage(ModelAndView model, @Param(value = "errorType") String resultParam) {
-		model.setViewName("login");
-		model.addObject("status", resultParam);
-		
+
+	@GetMapping("/")
+	public ModelAndView loginPage(ModelAndView model) {	
+		model.setViewName("login");		
 		return model;
 	}
 	
 	@PostMapping("/loginRequest")
 	@ResponseBody
-	public Map<String, Object> loginRequest(HttpSession session,@RequestBody HashMap<String, Object> params){
-		String id = (String) params.get("id");
-		String password = (String) params.get("password");
-		
+	public Map<String, Object> loginRequest(ModelAndView model, HttpSession session, LoginEntity params){
+		String id = (String) params.getId();
+		String password = (String) params.getPassword();
 		String identifyStr = null;
-		Map<String, Object> retval = new HashMap<String, Object>();
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		
 		try {
 			identifyStr = loginService.checkLoginInfo(id, password);
 		} catch (RepositoryException e) {
 			switch (e.getErrorType()) {
 			case LOGIN_PASSWORD_NOT_MATCH:
-				retval.put("result", "wrong_password");
-				break;
+				result.put("result", "login_notMatch");
 			default:
-				retval.put("result", "login_error");
+				result.put("result", "login_error");
 				break;
 			}
-		}catch (DataAccessException e) {
-			retval.put("result", "unknown_error");
+			return result;
+			
+		} catch (EntityNotFoundException e) {
+			result.put("result", "login_notMatch");
+			return result;
 		}
-		
 		if(identifyStr != null) {
 			session.setAttribute("Identity", identifyStr);
-			retval.put("result", "login_ok");
 		}
-		
-		return retval;
+		return result;
+	}
+	
+	@GetMapping("/register")
+	public String getRegister() {
+		return "join";
+	}
+	
+	@GetMapping("/individual_register")
+	public String getRegisterIndividual() {
+		return "join_individual";
 	}
 }
 
