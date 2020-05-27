@@ -7,7 +7,6 @@ import javax.servlet.ServletContext;
 import javax.sql.DataSource;
 
 import org.hibernate.cfg.AvailableSettings;
-import org.hibernate.dialect.MySQL57Dialect;
 import org.hibernate.dialect.MySQL5Dialect;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -50,7 +49,7 @@ public class DBBeanConfiguration {
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		factory.setJpaVendorAdapter(vendorAdapter);
-		factory.setPackagesToScan("com.multicampus.teamProj4.bank.login.entity","com.multicampus.teamProj4.bank.account.entity","com.multicampus.teamProj4.bank.user.entity");
+		factory.setPackagesToScan("com.multicampus.teamProj4.bank.account.entity","com.multicampus.teamProj4.bank.login.entity","com.multicampus.teamProj4.bank.user.entity");
 		factory.setDataSource(dataSource);
 		factory.setJpaProperties(getJpaProperties());
 		factory.afterPropertiesSet();
@@ -70,7 +69,7 @@ public class DBBeanConfiguration {
 
 	private Properties getJpaProperties() {
 		Properties properties = new Properties();
-		properties.put(AvailableSettings.DIALECT, MySQL57Dialect.class.getName());
+		properties.put(AvailableSettings.DIALECT, MySQL5Dialect.class.getName());
 		properties.put(AvailableSettings.SHOW_SQL, String.valueOf(true));
 		properties.put(AvailableSettings.HBM2DDL_AUTO, "update");
 
