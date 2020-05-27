@@ -60,15 +60,23 @@ public class LoginController {
 			return result;
 			
 		} catch (EntityNotFoundException e) {
-			result.put("result", "login_notFound");
+			result.put("result", "login_notMatch");
 			return result;
 		}
-		
 		if(identifyStr != null) {
 			session.setAttribute("Identity", identifyStr);
 		}
-		
 		return result;
+	}
+	
+	@GetMapping("/register")
+	public String getRegister() {
+		return "join";
+	}
+	
+	@GetMapping("/individual_register")
+	public String getRegisterIndividual() {
+		return "join_individual";
 	}
 }
 
