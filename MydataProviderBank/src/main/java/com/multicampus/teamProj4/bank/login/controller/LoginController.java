@@ -164,6 +164,32 @@ public class LoginController {
 				retval.put("result","not_match");
 				return retval;
 			}	
+		}else if(sessionCurrentPage == 3) {
+			String id = (String) params.get("id");
+			String birthday = (String) params.get("birthday");
+			String password = (String) params.get("password");
+			String password2 = (String) params.get("password2");
+			String email = (String) params.get("email");
+			
+			
+			
+		}else if(sessionCurrentPage == 4) {
+			
+		}
+		
+		return retval;
+	}
+	
+	@PostMapping("/id_check")
+	@ResponseBody
+	public Map<String, Object> postCheckId(HttpSession session, Map<String, Object> param){
+		Map<String,Object> retval = new HashMap<String, Object>();
+		
+		try {
+			loginService.checkIdExist((String) param.get("id"));
+			retval.put("result", "exist");
+		} catch (EntityNotFoundException e) {
+			retval.put("result", "not_exist");
 		}
 		
 		return retval;

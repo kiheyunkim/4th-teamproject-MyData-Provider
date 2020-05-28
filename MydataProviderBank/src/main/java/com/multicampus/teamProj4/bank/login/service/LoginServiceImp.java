@@ -70,4 +70,12 @@ public class LoginServiceImp implements LoginService{
 		
 		return account.getIndentifyStr();
 	}
+
+	@Override
+	@Transactional
+	public Boolean checkIdExist(String id) {
+		LoginEntity account  = loginRepository.getOne(id);
+		
+		return account != null;
+	}
 }
