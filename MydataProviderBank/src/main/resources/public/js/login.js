@@ -9,6 +9,9 @@ $(document).ready(()=>{
 			}else if(result.result === 'login_error'){
 				alert('에러가 발생했습니다');
 			}
+			else if(result.result === 'login_ok'){
+				window.location.href = '/';
+			}
 		});
 	})
 });

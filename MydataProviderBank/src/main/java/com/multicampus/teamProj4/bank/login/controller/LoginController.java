@@ -13,6 +13,7 @@ import com.multicampus.teamProj4.bank.login.service.LoginService;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.dao.DataAccessException;
@@ -29,14 +30,14 @@ public class LoginController {
 		this.loginService = loginService;
 	}
 	
-	@GetMapping
+	@GetMapping("/")
 	public ModelAndView loginPage(ModelAndView model, @Param(value = "errorType") String resultParam) {
 		model.setViewName("login");
 		model.addObject("status", resultParam);
 		
 		return model;
 	}
-	
+
 	@PostMapping("/loginRequest")
 	@ResponseBody
 	public Map<String, Object> loginRequest(HttpSession session,@RequestBody HashMap<String, Object> params){
@@ -50,22 +51,30 @@ public class LoginController {
 		} catch (RepositoryException e) {
 			switch (e.getErrorType()) {
 			case LOGIN_PASSWORD_NOT_MATCH:
-				retval.put("result", "wrong_password");
+				retval.put("result", "login_notMatch");
 				break;
 			default:
 				retval.put("result", "login_error");
 				break;
 			}
-		}catch (DataAccessException e) {
-			retval.put("result", "unknown_error");
+		}catch (EntityNotFoundException e) {
+			retval.put("result", "login_notMatch");
 		}
 		
 		if(identifyStr != null) {
 			session.setAttribute("Identity", identifyStr);
 			retval.put("result", "login_ok");
 		}
-		
 		return retval;
+	}
+	
+	@GetMapping("/register")
+	public String getRegister() {
+		return "join";
+	}
+	@GetMapping("/register_individual")
+	public String getIndividualRegister() {
+		return "join_individual";
 	}
 }
 
