@@ -19,4 +19,6 @@ public interface AccountService {
 	public Long withdrawTo(Long accountNum, Long accountFrom, Long accountTo, String password);
 
 	public List<AccountEntity> getUserAccounts(String identify);
+	
+	public String getIdentifyStr(Long accountNum, String password);
 }

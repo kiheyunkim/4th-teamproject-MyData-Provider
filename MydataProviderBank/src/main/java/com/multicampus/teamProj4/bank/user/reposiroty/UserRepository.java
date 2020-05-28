@@ -7,5 +7,4 @@ import com.multicampus.teamProj4.bank.user.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String>{
-
 }

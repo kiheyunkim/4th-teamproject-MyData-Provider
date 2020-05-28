@@ -6,6 +6,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -147,5 +148,17 @@ public class AccountServiceImp implements AccountService {
 		} catch (NoSuchAlgorithmException e) {
 			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_ERROR_OCCURED);
 		}
+	}
+
+	@Override
+	@Transactional
+	public String getIdentifyStr(Long accountNum, String password) {
+		Optional<AccountEntity> account = accountRepository.findById(accountNum);
+		
+		if(!account.isPresent()) {
+			throw new RepositoryException(RepositoryExceptionType.ACCOUNT_NOT_EXIST);
+		}
+		
+		return account.get().getIdentify();
 	}
 }

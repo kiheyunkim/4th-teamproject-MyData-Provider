@@ -3,10 +3,12 @@
 <head>
 	<title>기현은행</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/sub_header.css">
-	<link rel="stylesheet" type="text/css" href="css/sub_login.css">
-	<link rel="stylesheet" type="text/css" href="css/footer.css">
+	<link rel="stylesheet" type="text/css" href="/css/reset.css">
+	<link rel="stylesheet" type="text/css" href="/css/sub_header.css">
+	<link rel="stylesheet" type="text/css" href="/css/sub_login.css">
+	<link rel="stylesheet" type="text/css" href="/css/footer.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="/js/login.js"></script>
 </head>
 <body>
 	<header>
@@ -64,21 +66,21 @@
 				</ul>
 			</section>
 			<section>
-				<button id="login_SOL">DID 로그인</button>
-				<p>DID로 로그인!</p>
+				<button id="login_SOL">쏠패스 로그인</button>
+				<p>SOL 앱 연동하여 로그인!<span>(뱅크사인 이용 가능)</span></p>
 			</section>
 			<section>
-				<form action="./loginRequest" method="post">
+				<form>
 					<p>
-						<input type="text" name="id">
-						<input type="password" name="password">
+						<input type="text" name="name" id="idInput">
+						<input type="password" name="password" id="pwInput">
 					</p>
-					<input type="submit" id="login_input">ID 로그인
+					<input type="button" id="login_input" value="ID 로그인">
 				</form>
 				<ul>
 					<li><a href="#">아이디 찾기</a></li>
 					<li><a href="#">비밀번호 재설정</a></li>
-					<li><a href="join.html" id="link_join">회원가입</a></li>
+					<li><a href="./register" id="link_join">회원가입</a></li>
 				</ul>
 			</section>
 		</article>
